@@ -1,0 +1,106 @@
+* { /* сбрасываем изначальные настройки css */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --index: calc(1vw + 1vh); /*  получаем размер экрана */
+    --color-header: #f4efec; /* цвет для заголовков */
+    --color-text: #cdc6c3; /* цвет для обычного текста */
+    --gallery-gap: calc(var(--index) * 10); /* расстояние по вертикале */
+}
+
+@font-face { /* шрифты */
+    font-family: raleway-c;
+    src: url(../fonts/raleway-regular.woff2);
+}
+
+@font-face { /* шрифты */
+    font-family: outfit-c;
+    src: url(../fonts/outfit-regular.woff2);
+}
+h1, h2, h3, h4, h5, h6 { /* делаем шрифты для всех этих заголовков */
+    font-family: outfit-c;
+}
+/* will-change */
+.content, .hero, .main-header, .gallery > * {
+    will-change: transform; /* убираем лаги на странице при изменение transform  */
+}
+
+body {
+    background-image: url('../img/bg.jpg'); /* фон */
+    background-size: 50px; /* размер зерна на фоне сайта */
+    color: #fafafa;
+    font-family: raleway-c;
+    overflow-x: hidden; /* скрыть горизонтальную прокрутку */
+}
+
+.hero {
+    width: calc(var(--index)  * 36); /* делаем пропорциональным размер героя */
+    position: absolute;
+   	left: 37vw;
+	top: 22vh;
+    z-index: -1;
+}
+
+.main-header {
+    height: 100vh; /* высота первого экрана */
+}
+
+.container {
+	padding: 0 7vw;
+}
+
+.main-title {
+	font-size: calc(var(--index) * 8); /* делаем  размер шрифта от ширины экрана */
+    position: absolute;
+    width: min-content; /* делаем  перенос слов на новую строчку от самого длинного слова */
+    bottom: 12vh; /* отталкиваемся от высоты */
+    line-height: .9; /* отступ между строками */
+}
+
+.gallery {
+    display: flex;
+    padding: calc(var(--index) * 8) 0 ;  /* отступ для всей галерии */
+
+}
+
+.gallery > * { /* самый первый потомок  gallery */
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.gallery__item {
+    max-width: calc(var(--index) * 21);
+    margin-bottom: var(--gallery-gap);
+    max-height: 180vh;
+    border-radius: 8px; /*  скруглим изображение */
+}
+
+.gallery__left {
+    margin-top: calc(var(--gallery-gap) * 1.75); /*  отступы  для карточек */
+}
+
+.gallery__right .gallery__item{ /*  отступы  сверху для текста */
+    margin: 0;
+    margin-top: var(--gallery-gap);
+}
+
+.text-block {
+    column-gap: var(--color-text);
+    position: relative;
+}
+
+.text-block__h {
+    font-size: 2rem;
+    line-height: 2.4rem; /* отступ между строками */
+    content: var(--color-header);
+    margin-bottom: 1.5rem;
+}
+
+.text-block_p {
+    line-height: 1.75;
+}
